@@ -1,1 +1,1 @@
---macro includeFile('vdom/dist.js')
+--macro vdom.VDom.Loader.embed()

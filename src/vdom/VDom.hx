@@ -1,5 +1,22 @@
 package vdom;
 
+#if macro
+
+using sys.io.File;
+
+class Loader {
+  static function embed() {
+    haxe.macro.Context.onAfterGenerate(function () {
+      var out = haxe.macro.Compiler.getOutput();
+      var dist = haxe.io.Path.directory(haxe.macro.Context.getPosInfos((macro null).pos).file) + '/dist.js';
+      out.saveContent(dist.getContent() + '\n' + out.getContent());
+      //haxe.io.Bytes
+      //out.saveBytes(
+    });
+  }
+}
+#else
+
 import js.html.Element;
 import js.html.Event;
 import vdom.VNode.Children;
@@ -36,4 +53,6 @@ extern class VDom {
   
 }
 
-extern class Patch {}
+extern class Patch { }
+
+#end
