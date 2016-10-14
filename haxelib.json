@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "It compiles, let's ship it!",
-	"version": "0.0.1",
+	"releasenote": "Fix compatibility issue with completion server.",
+	"version": "0.0.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
