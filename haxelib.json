@@ -1,19 +1,19 @@
 {
-  "name": "js-virtual-dom",
-  "license": "MIT",
-  "tags": [
-    "js",
-    "virtual-dom",
-    "reactive"
-  ],
-  "classPath": "src",
-  "contributors": [
-    "back2dos"
-  ],
-  "releasenote": "initial release",
-  "version": "0.0.0",
-  "url": "https://github.com/back2dos/js-virtual-dom/",
-  "dependencies": {
-    "tink_core": ""
-  }
+	"name": "js-virtual-dom",
+	"license": "MIT",
+	"tags": [
+		"js",
+		"virtual-dom",
+		"reactive"
+	],
+	"classPath": "src",
+	"contributors": [
+		"back2dos"
+	],
+	"releasenote": "Initial release.",
+	"version": "0.0.0",
+	"url": "https://github.com/back2dos/js-virtual-dom/",
+	"dependencies": {
+		"tink_core": ""
+	}
 }
