@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Fix compatibility issue with completion server.",
-	"version": "0.0.2",
+	"releasenote": "Haxe 3.2.1 support.",
+	"version": "0.0.3",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
