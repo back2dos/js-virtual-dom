@@ -1,5 +1,10 @@
 package ;
 
+import vdom.VDom;
+import vdom.VNode;
+import vdom.Attr;
+import vdom.Widget;
+
 class RunTests {
 
   static function main() {
