@@ -34,9 +34,6 @@ extern class VDom {
 	static inline function img(?attr: {> Attr, @:optional var src(default, null):String; } ):VNode return h('img', attr);
 	static inline function input(?attr: {> Attr, @:optional var value(default, null):String; } ):VNode return h('input', attr);
   
-  static function __init__():Void {
-    haxe.macro.Compiler.includeFile('vdom/dist.js');
-  }
 }
 
 extern class Patch {}
