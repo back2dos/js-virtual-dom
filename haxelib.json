@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Haxe 3.2.1 support.",
-	"version": "0.0.3",
+	"releasenote": "Various little improvements. Improve compatibility with DCE and closure's ADVANCED_MODE. Add a few missing tags and attributes.",
+	"version": "0.1.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
