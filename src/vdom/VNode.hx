@@ -27,4 +27,10 @@ private extern class VNodeImpl {
   @:from static inline function ofWidget(w:Widget):VNode 
     return cast w;
   
+  @:to function toChildren():Children {
+    return cast this;
+  }
+  
+  @:from static function ofMany(c:Children):VNode
+    return cast c;
 }

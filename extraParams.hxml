@@ -1,1 +1,1 @@
---macro vdom.VDom.Loader.embed()
+--macro vdom.macros.Loader.embed()

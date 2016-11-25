@@ -1,21 +1,6 @@
 package vdom;
 
-#if macro
-
-using sys.io.File;
-
-class Loader {
-  static function embed() {
-    haxe.macro.Context.onAfterGenerate(function () {
-      var out = haxe.macro.Compiler.getOutput();
-      var dist = haxe.io.Path.directory(haxe.macro.Context.getPosInfos((macro null).pos).file) + '/dist.js';
-      out.saveContent(dist.getContent() + '\n' + out.getContent());
-      //haxe.io.Bytes
-      //out.saveBytes(
-    });
-  }
-}
-#else
+#if !macro
 
 import js.html.Element;
 import js.html.Event;
@@ -24,12 +9,16 @@ import vdom.VNode.Children;
 @:native('window.virtualDom')
 extern class VDom {
   
+  macro static public function hxx(e:haxe.macro.Expr):haxe.macro.Expr;
+  
   static function create(node:VNode):Element;
   static function diff(old:VNode, nu:VNode):Patch;
   
+  static inline function object(?attr:{>Attr, type:String, data:String}, ?children:Children):VNode return h('object', attr, children);
+  static inline function param(?attr:{>Attr, name:String, value:String}):VNode return h('param', attr);
   static public function patch(target:Element, patch:Patch):Element;
   
-  static function h(selector:String, ?attr:Attr, ?children:Children):VNode;
+  static function h(selector:String, ?attr:Dynamic, ?children:Children):VNode;
   
   static inline function div(?attr:Attr, ?children:Children):VNode return h('div', attr, children);
   static inline function aside(?attr:Attr, ?children:Children):VNode return h('aside', attr, children);
@@ -79,5 +68,35 @@ typedef ImgAttr = {> Attr,
 }
 
 extern class Patch { }
+
+#else
+
+
+import haxe.macro.Expr;
+import hxx.*;
+
+using haxe.macro.Context;
+
+class VDom {
+  static public function hxx(e:Expr) 
+    return 
+      #if hxx
+        macro @:pos(e.pos) (
+          ${Parser.parse(e, function (name:StringAt, attr, children:haxe.ds.Option<Expr>) 
+            return macro @:pos(name.pos) $i{name.value}(
+              $attr,
+              ${switch children {
+                case Some(v): v;
+                default: macro null;
+              }} 
+            )
+          )}
+            :
+          vdom.VNode
+        );
+      #else
+        'You have to add -lib hxx to use HXX syntax'.fatalError(Context.currentPos());
+      #end
+}
 
 #end
