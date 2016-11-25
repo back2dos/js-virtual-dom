@@ -81,19 +81,19 @@ class VDom {
   static public function hxx(e:Expr) 
     return 
       #if hxx
-        macro @:pos(e.pos) (
-          ${Parser.parse(e, function (name:StringAt, attr, children:haxe.ds.Option<Expr>) 
-            return macro @:pos(name.pos) $i{name.value}(
-              $attr,
-              ${switch children {
-                case Some(v): v;
-                default: macro null;
-              }} 
-            )
-          )}
-            :
-          vdom.VNode
-        );
+        Parser.parse(e, function (name:StringAt, attr, children:haxe.ds.Option<Expr>) {
+          var args = [attr];
+          
+          switch children {
+            case Some(macro $a{children}): 
+              children = [for (c in children) macro @:pos(c.pos) ($c : vdom.VNode)];
+              args.push(macro [$a{children}]);
+              //args.push(macro @:pos(v.pos) ($v : vdom.VNode));
+            default:
+          }
+          
+          return macro @:pos(name.pos) $i{name.value}($a{args});
+        });
       #else
         'You have to add -lib hxx to use HXX syntax'.fatalError(Context.currentPos());
       #end

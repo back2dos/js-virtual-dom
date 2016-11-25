@@ -13,7 +13,7 @@ private extern class VNodeImpl {
 @:coreType abstract VNode from VNodeImpl from Widget {
   
   @:to public function toElement() 
-    return VDom.create(this);
+    return VDom.create(this);//TODO: handle array case
 	
 	public inline function new(tagName:String, ?properties:Attr, ?children:Children, ?key:String, ?namespace:String)
 		this = new VNodeImpl(tagName, properties, children, key, namespace);
