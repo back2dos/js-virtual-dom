@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Various little improvements. Improve compatibility with DCE and closure's ADVANCED_MODE. Add a few missing tags and attributes.",
-	"version": "0.1.0",
+	"releasenote": "Add HXX support.",
+	"version": "0.2.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
