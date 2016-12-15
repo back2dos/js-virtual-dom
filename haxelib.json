@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Better handling for implicit conversions in HXX.",
-	"version": "0.2.1",
+	"releasenote": "Avoid issues with AMD and other stuff.",
+	"version": "0.2.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
