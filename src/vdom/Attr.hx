@@ -1,11 +1,17 @@
 package vdom;
 
-import js.html.Element;
 import js.html.Event;
 
 using tink.CoreApi;
 
 typedef Style = Dynamic;
+
+abstract Ext(String) from String to String {
+  @:from static inline function ofBool(b:Bool):Ext
+    return 
+      if (b) '';
+      else js.Lib.undefined;
+}
 
 typedef Attr = {
   @:optional var className(default, null):String;
@@ -14,7 +20,7 @@ typedef Attr = {
 	@:optional var lang(default, null):String;
 	@:optional var dir(default, null):String;
 	
-  @:optional var attributes(default, null):Dynamic<String>;
+  @:optional var attributes(default, null):Dynamic<Ext>;
   
 	@:optional var hidden(default, null):Bool;
 	@:optional var tabIndex(default, null):Int;

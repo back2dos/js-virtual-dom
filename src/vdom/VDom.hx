@@ -76,12 +76,35 @@ import haxe.macro.Expr;
 import hxx.*;
 
 using haxe.macro.Context;
+using tink.MacroApi;
+using tink.CoreApi;
 
 class VDom {
+  
   static public function hxx(e:Expr) 
     return 
       #if hxx
-        Parser.parse(e, function (name:StringAt, attr, children:haxe.ds.Option<Expr>) {
+        Parser.parse(e, function (name:StringAt, attr:Expr, children:haxe.ds.Option<Expr>) {
+          switch attr.expr {
+            case EObjectDecl(fields):
+              var ext = [],
+                  std = [];
+                  
+              for (f in fields)
+                if (f.field.indexOf('-') == -1)
+                  std.push(f);
+                else
+                  ext.push(f);
+                  
+              if (ext.length > 0)
+                std.push({
+                  field: 'attributes',
+                  expr: { expr: EObjectDecl(ext), pos: attr.pos },
+                });
+                
+              attr = { expr: EObjectDecl(std), pos: attr.pos };
+            default: throw 'assert';
+          }
           var args = [attr];
           
           switch children {
@@ -92,7 +115,11 @@ class VDom {
             default:
           }
           
-          return macro @:pos(name.pos) $i{name.value}($a{args});
+          return 
+            if (name.value.charAt(0).toLowerCase() != name.value.charAt(0))
+              name.value.instantiate(args, name.pos);
+            else 
+              macro @:pos(name.pos) $i{name.value}($a{args});
         });
       #else
         'You have to add -lib hxx to use HXX syntax'.fatalError(Context.currentPos());
