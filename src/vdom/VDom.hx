@@ -6,8 +6,13 @@ import js.html.Element;
 import js.html.Event;
 import vdom.VNode.Children;
 
-@:native('window.virtualDom')
+@:native('vdom_VDom')
 extern class VDom {
+  
+  static function __init__():Void {
+    //untyped __js__('var vdom_VDom') = 
+    vdom.macros.Loader.embedInline();
+  }
   
   macro static public function hxx(e:haxe.macro.Expr):haxe.macro.Expr;
   
