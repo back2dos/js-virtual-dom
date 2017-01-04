@@ -31,6 +31,6 @@ private extern class VNodeImpl {
     return cast this;
   }
   
-  @:from static function ofMany(c:Children):VNode
+  @:noCompletion @:from static public function flatten(c:Children):VNode
     return cast c;
 }

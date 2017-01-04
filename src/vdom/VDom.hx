@@ -73,7 +73,7 @@ extern class Patch { }
 
 
 import haxe.macro.Expr;
-import hxx.*;
+import tink.hxx.*;
 
 using haxe.macro.Context;
 using tink.MacroApi;
@@ -84,45 +84,9 @@ class VDom {
   static public function hxx(e:Expr) 
     return 
       #if hxx
-        Parser.parse(e, function (name:StringAt, attr:Expr, children:haxe.ds.Option<Expr>) {
-          switch attr.expr {
-            case EObjectDecl(fields):
-              var ext = [],
-                  std = [];
-                  
-              for (f in fields)
-                if (f.field.indexOf('-') == -1)
-                  std.push(f);
-                else
-                  ext.push(f);
-                  
-              if (ext.length > 0)
-                std.push({
-                  field: 'attributes',
-                  expr: { expr: EObjectDecl(ext), pos: attr.pos },
-                });
-                
-              attr = { expr: EObjectDecl(std), pos: attr.pos };
-            default: throw 'assert';
-          }
-          var args = [attr];
-          
-          switch children {
-            case Some(macro $a{children}): 
-              children = [for (c in children) macro @:pos(c.pos) ($c : vdom.VNode)];
-              args.push(macro [$a{children}]);
-              //args.push(macro @:pos(v.pos) ($v : vdom.VNode));
-            default:
-          }
-          
-          return 
-            if (name.value.charAt(0).toLowerCase() != name.value.charAt(0))
-              name.value.instantiate(args, name.pos);
-            else 
-              macro @:pos(name.pos) $i{name.value}($a{args});
-        });
+        Parser.parse(e, { customAttributes: 'attributes', child: macro : vdom.VNode });
       #else
-        'You have to add -lib hxx to use HXX syntax'.fatalError(Context.currentPos());
+        'You have to add -lib tink_hxx to use HXX syntax'.fatalError(Context.currentPos());
       #end
 }
 
