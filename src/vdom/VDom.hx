@@ -77,6 +77,7 @@ typedef AnchorAttr = {> Attr,
 
 
 typedef InputAttr = {> Attr, 
+  @:optional var checked(default, null):Bool;
   @:optional var disabled(default, null):Bool;
   @:optional var value(default, null):String; 
   @:optional var type(default, null):String; 
@@ -93,7 +94,7 @@ extern class Patch { }
 
 
 import haxe.macro.Expr;
-import tink.hxx.*;
+import tink.hxx.Parser;
 
 using haxe.macro.Context;
 using tink.MacroApi;
