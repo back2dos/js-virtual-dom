@@ -14,6 +14,7 @@ abstract Ext(String) from String to String {
 }
 
 typedef Attr = {
+  @:optional var key(default, null):Any;
   @:optional var className(default, null):String;
 	@:optional var id(default, null):String;
 	@:optional var title(default, null):String;

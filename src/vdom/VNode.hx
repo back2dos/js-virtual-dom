@@ -23,9 +23,6 @@ private extern class VNodeImpl {
     
 	@:from static inline function ofInt(i:Int):VNode 
     return ofString(Std.string(i));
-    
-  @:from static inline function ofWidget(w:Widget):VNode 
-    return cast w;
   
   @:to function toChildren():Children {
     return cast this;
