@@ -1,6 +1,6 @@
 package vdom;
 
-import js.html.Event;
+import js.html.*;
 
 using tink.CoreApi;
 
@@ -23,7 +23,16 @@ abstract Key(Dynamic) from String from Int {
   }
 }
 
-typedef Attr = {
+typedef Attr = AttrOf<Element>;
+
+@:forward
+abstract EventFrom<E:Event, T:Element>(E) from E to E {
+  public var target(get, never):T;
+    inline function get_target():T
+      return cast this.target;
+}
+
+typedef AttrOf<Target:Element> = {
   @:optional var key(default, null):Key;
   @:optional var className(default, null):String;
   @:optional var id(default, null):String;
@@ -42,80 +51,94 @@ typedef Attr = {
   @:optional var spellcheck(default, null):Bool;
   @:optional var style(default, null):Style;
   
-  @:optional var onwheel(default, null):Callback<Event>;
-  @:optional var oncopy(default, null):Callback<Event>;
-  @:optional var oncut(default, null):Callback<Event>;
-  @:optional var onpaste(default, null):Callback<Event>;
-  @:optional var onabort(default, null):Callback<Event>;
-  @:optional var onblur(default, null):Callback<Event>;
-  @:optional var onfocus(default, null):Callback<Event>;
-  @:optional var oncanplay(default, null):Callback<Event>;
-  @:optional var oncanplaythrough(default, null):Callback<Event>;
-  @:optional var onchange(default, null):Callback<Event>;
-  @:optional var onclick(default, null):Callback<Event>;
-  @:optional var oncontextmenu(default, null):Callback<Event>;
-  @:optional var ondblclick(default, null):Callback<Event>;
-  @:optional var ondrag(default, null):Callback<Event>;
-  @:optional var ondragend(default, null):Callback<Event>;
-  @:optional var ondragenter(default, null):Callback<Event>;
-  @:optional var ondragleave(default, null):Callback<Event>;
-  @:optional var ondragover(default, null):Callback<Event>;
-  @:optional var ondragstart(default, null):Callback<Event>;
-  @:optional var ondrop(default, null):Callback<Event>;
-  @:optional var ondurationchange(default, null):Callback<Event>;
-  @:optional var onemptied(default, null):Callback<Event>;
-  @:optional var onended(default, null):Callback<Event>;
-  @:optional var oninput(default, null):Callback<Event>;
-  @:optional var oninvalid(default, null):Callback<Event>;
-  @:optional var onkeydown(default, null):Callback<Event>;
-  @:optional var onkeypress(default, null):Callback<Event>;
-  @:optional var onkeyup(default, null):Callback<Event>;
-  @:optional var onload(default, null):Callback<Event>;
-  @:optional var onloadeddata(default, null):Callback<Event>;
-  @:optional var onloadedmetadata(default, null):Callback<Event>;
-  @:optional var onloadstart(default, null):Callback<Event>;
-  @:optional var onmousedown(default, null):Callback<Event>;
-  @:optional var onmouseenter(default, null):Callback<Event>;
-  @:optional var onmouseleave(default, null):Callback<Event>;
-  @:optional var onmousemove(default, null):Callback<Event>;
-  @:optional var onmouseout(default, null):Callback<Event>;
-  @:optional var onmouseover(default, null):Callback<Event>;
-  @:optional var onmouseup(default, null):Callback<Event>;
-  @:optional var onpause(default, null):Callback<Event>;
-  @:optional var onplay(default, null):Callback<Event>;
-  @:optional var onplaying(default, null):Callback<Event>;
-  @:optional var onprogress(default, null):Callback<Event>;
-  @:optional var onratechange(default, null):Callback<Event>;
-  @:optional var onreset(default, null):Callback<Event>;
-  @:optional var onresize(default, null):Callback<Event>;
-  @:optional var onscroll(default, null):Callback<Event>;
-  @:optional var onseeked(default, null):Callback<Event>;
-  @:optional var onseeking(default, null):Callback<Event>;
-  @:optional var onselect(default, null):Callback<Event>;
-  @:optional var onshow(default, null):Callback<Event>;
-  @:optional var onstalled(default, null):Callback<Event>;
-  @:optional var onsubmit(default, null):Callback<Event>;
-  @:optional var onsuspend(default, null):Callback<Event>;
-  @:optional var ontimeupdate(default, null):Callback<Event>;
-  @:optional var onvolumechange(default, null):Callback<Event>;
-  @:optional var onwaiting(default, null):Callback<Event>;
-  @:optional var onpointercancel(default, null):Callback<Event>;
-  @:optional var onpointerdown(default, null):Callback<Event>;
-  @:optional var onpointerup(default, null):Callback<Event>;
-  @:optional var onpointermove(default, null):Callback<Event>;
-  @:optional var onpointerout(default, null):Callback<Event>;
-  @:optional var onpointerover(default, null):Callback<Event>;
-  @:optional var onpointerenter(default, null):Callback<Event>;
-  @:optional var onpointerleave(default, null):Callback<Event>;
-  @:optional var ongotpointercapture(default, null):Callback<Event>;
-  @:optional var onlostpointercapture(default, null):Callback<Event>;
-  @:optional var onfullscreenchange(default, null):Callback<Event>;
-  @:optional var onfullscreenerror(default, null):Callback<Event>;
-  @:optional var onpointerlockchange(default, null):Callback<Event>;
-  @:optional var onpointerlockerror(default, null):Callback<Event>;
-  @:optional var onerror(default, null):Callback<Event>;
-  @:optional var ontouchstart(default, null):Callback<Event>;
-  @:optional var ontouchend(default, null):Callback<Event>;
-  @:optional var ontouchmove(default, null):Callback<Event>;
-  @:optional var ontouchcancel(default, null):Callback<Event>;
+  @:optional var onwheel(default, null):Callback<EventFrom<WheelEvent, Target>>;
+  
+  @:optional var oncopy(default, null):Callback<EventFrom<ClipboardEvent, Target>>;
+  @:optional var oncut(default, null):Callback<EventFrom<ClipboardEvent, Target>>;
+  @:optional var onpaste(default, null):Callback<EventFrom<ClipboardEvent, Target>>;
+  
+  @:optional var onabort(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onblur(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onfocus(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var oncanplay(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var oncanplaythrough(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onchange(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var onclick(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var oncontextmenu(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var ondblclick(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  
+  @:optional var ondrag(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondragend(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondragenter(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondragleave(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondragover(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondragstart(default, null):Callback<EventFrom<DragEvent, Target>>;
+  @:optional var ondrop(default, null):Callback<EventFrom<DragEvent, Target>>;
+  
+  @:optional var ondurationchange(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onemptied(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onended(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var oninput(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var oninvalid(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var onkeydown(default, null):Callback<EventFrom<KeyboardEvent, Target>>;
+  @:optional var onkeypress(default, null):Callback<EventFrom<KeyboardEvent, Target>>;
+  @:optional var onkeyup(default, null):Callback<EventFrom<KeyboardEvent, Target>>;
+  
+  @:optional var onload(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onloadeddata(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onloadedmetadata(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onloadstart(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var onmousedown(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmouseenter(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmouseleave(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmousemove(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmouseout(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmouseover(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  @:optional var onmouseup(default, null):Callback<EventFrom<MouseEvent, Target>>;
+  
+  @:optional var onpause(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onplay(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onplaying(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onprogress(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onratechange(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onreset(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onresize(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onscroll(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onseeked(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onseeking(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onselect(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onshow(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onstalled(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onsubmit(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onsuspend(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var ontimeupdate(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onvolumechange(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onwaiting(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var onpointercancel(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerdown(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerup(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointermove(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerout(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerover(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerenter(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  @:optional var onpointerleave(default, null):Callback<EventFrom<PointerEvent, Target>>;
+  
+  @:optional var ongotpointercapture(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onlostpointercapture(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onfullscreenchange(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onfullscreenerror(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onpointerlockchange(default, null):Callback<EventFrom<Event, Target>>;
+  @:optional var onpointerlockerror(default, null):Callback<EventFrom<Event, Target>>;
+  
+  @:optional var onerror(default, null):Callback<EventFrom<ErrorEvent, Target>>;
+  
+  @:optional var ontouchstart(default, null):Callback<EventFrom<TouchEvent, Target>>;
+  @:optional var ontouchend(default, null):Callback<EventFrom<TouchEvent, Target>>;
+  @:optional var ontouchmove(default, null):Callback<EventFrom<TouchEvent, Target>>;
+  @:optional var ontouchcancel(default, null):Callback<EventFrom<TouchEvent, Target>>;
 }

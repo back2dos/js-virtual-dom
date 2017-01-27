@@ -2,15 +2,14 @@ package vdom;
 
 #if !macro
 
-import js.html.Element;
-import js.html.Event;
+import js.html.*;
 import vdom.VNode.Children;
+import vdom.Attr;
 
 @:native('vdom_VDom')
 extern class VDom {
   
   static function __init__():Void {
-    //untyped __js__('var vdom_VDom') = 
     vdom.macros.Loader.embedInline();
   }
   
@@ -18,12 +17,14 @@ extern class VDom {
   
   macro static public function hxx(e:haxe.macro.Expr):haxe.macro.Expr;
   
+  static function patch(target:Element, patch:Patch):Element;
   static function create(node:VNode):Element;
   static function diff(old:VNode, nu:VNode):Patch;
   
-  static inline function object(attr:{>Attr, type:String, data:String}, ?children:Children):VNode return h('object', attr, children);
-  static inline function param(attr:{>Attr, name:String, value:String}):VNode return h('param', attr);
-  static public function patch(target:Element, patch:Patch):Element;
+  static inline function object(attr: {> Attr, type:String, data:String }, ?children:Children):VNode return h('object', attr, children);
+    
+  static inline function param(attr: {> Attr, name:String, value:String } ):VNode return h('param', attr);
+    
   
   static function h(selector:String, attr:Dynamic, ?children:Children):VNode;
   
@@ -53,7 +54,7 @@ extern class VDom {
   static inline function li(attr:Attr, ?children:Children):VNode return h('li', attr, children);
   static inline function label(attr:Attr, ?children:Children):VNode return h('label', attr, children);
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
-  static inline function textarea(attr:Attr, ?children:Children):VNode return h('textarea', attr, children);
+  static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
   
   static inline function img(attr: ImgAttr ):VNode return h('img', attr);
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
@@ -66,17 +67,17 @@ extern class VDom {
 
 
 
-typedef FormAttr = {>Attr,
+typedef FormAttr = {>AttrOf<FormElement>,
   @:optional var method(default, null):String;
   @:optional var action(default, null):String;
 }
 
-typedef AnchorAttr = {> Attr,
+typedef AnchorAttr = {> AttrOf<AnchorElement>,
   @:optional var href(default, null):String; 
 }
 
 
-typedef InputAttr = {> Attr, 
+typedef InputAttr = {> AttrOf<InputElement>, 
   @:optional var checked(default, null):Bool;
   @:optional var disabled(default, null):Bool;
   @:optional var value(default, null):String; 
@@ -84,7 +85,7 @@ typedef InputAttr = {> Attr,
   @:optional var name(default, null):String; 
 }
 
-typedef ImgAttr = {> Attr, 
+typedef ImgAttr = {> AttrOf<ImageElement>, 
   @:optional var src(default, null):String; 
 }
 
