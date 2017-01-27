@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Support full HXX feature set.",
-	"version": "0.3.0",
+	"releasenote": "Typed events, proper handling for arbitrary keys, added more tags.",
+	"version": "0.4.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
