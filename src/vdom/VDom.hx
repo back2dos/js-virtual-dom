@@ -48,11 +48,13 @@ extern class VDom {
   static inline function a(attr:AnchorAttr, ?children:Children):VNode return h('a', attr, children);
   
   static inline function p(attr:Attr, ?children:Children):VNode return h('p', attr, children);
+  static inline function i(attr:Attr, ?children:Children):VNode return h('i', attr, children);
+  static inline function b(attr:Attr, ?children:Children):VNode return h('b', attr, children);
   static inline function menu(attr:Attr, ?children:Children):VNode return h('menu', attr, children);
   static inline function ul(attr:Attr, ?children:Children):VNode return h('ul', attr, children);
   static inline function ol(attr:Attr, ?children:Children):VNode return h('ol', attr, children);
   static inline function li(attr:Attr, ?children:Children):VNode return h('li', attr, children);
-  static inline function label(attr:Attr, ?children:Children):VNode return h('label', attr, children);
+  static inline function label(attr:LabelAttr, ?children:Children):VNode return h('label', attr, children);
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
   static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
   
@@ -82,12 +84,17 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var disabled(default, null):Bool;
   @:optional var value(default, null):String; 
   @:optional var type(default, null):String; 
-  @:optional var name(default, null):String; 
+  @:optional var name(default, null):String;
 }
 
 typedef ImgAttr = {> AttrOf<ImageElement>, 
   @:optional var src(default, null):String; 
 }
+
+typedef LabelAttr = {> AttrOf<LabelElement>, 
+  @:optional var htmlFor(default, null):String;
+}
+ 
 
 extern class Patch { }
 
