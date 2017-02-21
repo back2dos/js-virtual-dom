@@ -3,6 +3,7 @@ package vdom;
 #if !macro
 
 import js.html.*;
+import js.Browser;
 import vdom.VNode.Children;
 import vdom.Attr;
 
@@ -64,10 +65,19 @@ extern class VDom {
   
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
   
+  static inline function raw(attr: RawAttr):VNode {	  
+	  var spanElement = Browser.document.createSpanElement();
+	  spanElement.innerHTML = attr.content;
+	  var widget:Widget = new Foreign(spanElement);
+	  return widget;
+  }
   
 }
 
 
+typedef RawAttr = {
+	var content:String;
+}
 
 typedef FormAttr = {>AttrOf<FormElement>,
   @:optional var method(default, null):String;
