@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "i, b tags added label attributes expanded with \"htmlFor\" that is alias for \"for\" attribute",
-	"version": "0.4.1",
+	"releasenote": "Add <raw> tag.",
+	"version": "0.4.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
