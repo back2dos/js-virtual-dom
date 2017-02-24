@@ -14,8 +14,6 @@ extern class VDom {
     vdom.macros.Loader.embedInline();
   }
   
-  macro static public function render(attr:haxe.macro.Expr, children:haxe.macro.Expr):haxe.macro.Expr;
-  
   macro static public function hxx(e:haxe.macro.Expr):haxe.macro.Expr;
   
   static function patch(target:Element, patch:Patch):Element;
@@ -110,24 +108,27 @@ extern class Patch { }
 
 #else
 
-
 import haxe.macro.Expr;
+
+#if tink_hxx
 import tink.hxx.Parser;
+import tink.hxx.Generator;
+#end
 
 using haxe.macro.Context;
 using tink.MacroApi;
 using tink.CoreApi;
 
 class VDom {
-  static public function render(attr:Expr, children:Expr) {
-    return macro 'hohoho';
-  }
+  #if tink_hxx
+  static public var options(default, null):GeneratorOptions = { customAttributes: 'attributes', child: macro : vdom.VNode };
+  #end
   static public function hxx(e:Expr) 
     return 
       #if tink_hxx
         Parser.parse(
           e, 
-          { customAttributes: 'attributes', child: macro : vdom.VNode }, 
+          options, 
           { defaultExtension: 'hxx', noControlStructures: false, defaultSwitchTarget: macro __data__ }
         );
       #else
