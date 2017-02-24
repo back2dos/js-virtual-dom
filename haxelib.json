@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Add <raw> tag.",
-	"version": "0.4.2",
+	"releasenote": "Improved key handling.",
+	"version": "0.4.3",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
