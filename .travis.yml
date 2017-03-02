@@ -5,19 +5,16 @@ language: haxe
 
 os:
   - linux
-  - osx
   
 haxe:
   - "3.2.1"
   - development
-  
-matrix:
-  allow_failures:
-    - haxe: development
-    
+      
 install:
   - haxelib install travix
+  - haxelib install tink_hxx
   - haxelib run travix install
 
 script:
   - haxelib run travix js
+  - haxelib run travix js -lib tink_hxx
