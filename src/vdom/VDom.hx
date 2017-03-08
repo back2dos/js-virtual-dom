@@ -27,32 +27,32 @@ extern class VDom {
   
   static function h(selector:String, attr:Dynamic, ?children:Children):VNode;
   
-  static inline function div(attr:Attr, ?children:Children):VNode return h('div', attr, children);
-  static inline function aside(attr:Attr, ?children:Children):VNode return h('aside', attr, children);
-  static inline function section(attr:Attr, ?children:Children):VNode return h('section', attr, children);
+  static inline function div(attr:EditableAttr, ?children:Children):VNode return h('div', attr, children);
+  static inline function aside(attr:EditableAttr, ?children:Children):VNode return h('aside', attr, children);
+  static inline function section(attr:EditableAttr, ?children:Children):VNode return h('section', attr, children);
   
-  static inline function header(attr:Attr, ?children:Children):VNode return h('header', attr, children);
-  static inline function footer(attr:Attr, ?children:Children):VNode return h('footer', attr, children);
-  static inline function main(attr:Attr, ?children:Children):VNode return h('main', attr, children);
+  static inline function header(attr:EditableAttr, ?children:Children):VNode return h('header', attr, children);
+  static inline function footer(attr:EditableAttr, ?children:Children):VNode return h('footer', attr, children);
+  static inline function main(attr:EditableAttr, ?children:Children):VNode return h('main', attr, children);
   
-  static inline function h1(attr:Attr, ?children:Children):VNode return h('h1', attr, children);
-  static inline function h2(attr:Attr, ?children:Children):VNode return h('h2', attr, children);
-  static inline function h3(attr:Attr, ?children:Children):VNode return h('h3', attr, children);
-  static inline function h4(attr:Attr, ?children:Children):VNode return h('h4', attr, children);
-  static inline function h5(attr:Attr, ?children:Children):VNode return h('h5', attr, children);
+  static inline function h1(attr:EditableAttr, ?children:Children):VNode return h('h1', attr, children);
+  static inline function h2(attr:EditableAttr, ?children:Children):VNode return h('h2', attr, children);
+  static inline function h3(attr:EditableAttr, ?children:Children):VNode return h('h3', attr, children);
+  static inline function h4(attr:EditableAttr, ?children:Children):VNode return h('h4', attr, children);
+  static inline function h5(attr:EditableAttr, ?children:Children):VNode return h('h5', attr, children);
   
-  static inline function strong(attr:Attr, ?children:Children):VNode return h('strong', attr, children);
-  static inline function em(attr:Attr, ?children:Children):VNode return h('em', attr, children);
-  static inline function span(attr:Attr, ?children:Children):VNode return h('span', attr, children);
+  static inline function strong(attr:EditableAttr, ?children:Children):VNode return h('strong', attr, children);
+  static inline function em(attr:EditableAttr, ?children:Children):VNode return h('em', attr, children);
+  static inline function span(attr:EditableAttr, ?children:Children):VNode return h('span', attr, children);
   static inline function a(attr:AnchorAttr, ?children:Children):VNode return h('a', attr, children);
   
-  static inline function p(attr:Attr, ?children:Children):VNode return h('p', attr, children);
-  static inline function i(attr:Attr, ?children:Children):VNode return h('i', attr, children);
-  static inline function b(attr:Attr, ?children:Children):VNode return h('b', attr, children);
-  static inline function menu(attr:Attr, ?children:Children):VNode return h('menu', attr, children);
-  static inline function ul(attr:Attr, ?children:Children):VNode return h('ul', attr, children);
-  static inline function ol(attr:Attr, ?children:Children):VNode return h('ol', attr, children);
-  static inline function li(attr:Attr, ?children:Children):VNode return h('li', attr, children);
+  static inline function p(attr:EditableAttr, ?children:Children):VNode return h('p', attr, children);
+  static inline function i(attr:EditableAttr, ?children:Children):VNode return h('i', attr, children);
+  static inline function b(attr:EditableAttr, ?children:Children):VNode return h('b', attr, children);
+  static inline function menu(attr:EditableAttr, ?children:Children):VNode return h('menu', attr, children);
+  static inline function ul(attr:EditableAttr, ?children:Children):VNode return h('ul', attr, children);
+  static inline function ol(attr:EditableAttr, ?children:Children):VNode return h('ol', attr, children);
+  static inline function li(attr:EditableAttr, ?children:Children):VNode return h('li', attr, children);
   static inline function label(attr:LabelAttr, ?children:Children):VNode return h('label', attr, children);
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
   static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
@@ -75,6 +75,10 @@ extern class VDom {
 
 typedef RawAttr = {
 	var content:String;
+}
+
+typedef EditableAttr = {>Attr,
+  @:optional var contentEditable(default, null):Bool;
 }
 
 typedef FormAttr = {>AttrOf<FormElement>,
