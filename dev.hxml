@@ -1,0 +1,4 @@
+tests.hxml
+-cp src
+-js out.js
+--no-output

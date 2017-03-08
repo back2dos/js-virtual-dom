@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Improved key handling.",
-	"version": "0.4.3",
+	"releasenote": "Add VRoot and some documentation.",
+	"version": "0.5.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
