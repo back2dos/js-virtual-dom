@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Add contentEditable.",
-	"version": "0.5.1",
+	"releasenote": "some parameters added for <input type=\"range\" />",
+	"version": "0.5.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
