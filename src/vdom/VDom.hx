@@ -64,17 +64,17 @@ extern class VDom {
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
   
   static inline function raw(attr: RawAttr):VNode {	  
-	  var spanElement = Browser.document.createSpanElement();
-	  spanElement.innerHTML = attr.content;
-	  var widget:Widget = new Foreign(spanElement);
-	  return widget;
+    var spanElement = Browser.document.createSpanElement();
+    spanElement.innerHTML = attr.content;
+    var widget:Widget = new Foreign(spanElement);
+    return widget;
   }
   
 }
 
 
 typedef RawAttr = {
-	var content:String;
+  var content:String;
 }
 
 typedef EditableAttr = {>Attr,
@@ -97,7 +97,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var value(default, null):String; 
   @:optional var type(default, null):String; 
   @:optional var name(default, null):String;
-  @:optional var orient(default, null):String;
+  @:optional var placeholder(default, null):String;
   @:optional var max(default, null):String;
   @:optional var min(default, null):String;
 }
