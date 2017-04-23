@@ -5,6 +5,14 @@ import js.html.*;
 using tink.CoreApi;
 
 typedef Style = Dynamic;
+abstract ClassName(String) from String to String {
+
+  @:from static function ofMap(parts:Map<String, Bool>)
+    return ofArray([for (c in parts.keys()) if (parts[c]) c]);
+  
+  @:from static function ofArray(parts:Array<String>):ClassName 
+    return parts.join(' ');
+}
 
 abstract Ext(String) from String to String {
   @:from static inline function ofBool(b:Bool):Ext
@@ -41,7 +49,7 @@ abstract EventFrom<E:Event, T:Element>(E) from E to E {
 
 typedef AttrOf<Target:Element> = {
   @:optional var key(default, null):Key;
-  @:optional var className(default, null):String;
+  @:optional var className(default, null):ClassName;
   @:optional var id(default, null):String;
   @:optional var title(default, null):String;
   @:optional var lang(default, null):String;
