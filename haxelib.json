@@ -10,7 +10,7 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Added <nav>. Improved <raw>",
+	"releasenote": "Added <nav>. Improved <raw>.",
 	"version": "0.5.3",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
