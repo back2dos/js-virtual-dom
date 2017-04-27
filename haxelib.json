@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Added <nav>. Improved <raw>.",
-	"version": "0.5.3",
+	"releasenote": "Improve inline style handling.",
+	"version": "0.5.4",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
