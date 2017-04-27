@@ -26,11 +26,15 @@ class RunTests extends haxe.unit.TestCase {
       div({ className: 'test' }, ['hola mundo'])
     );   
     check('hola mundo');
+    
+    var backgroundImageUrl = 'http://placehold.it/350x150';
+    // var style = ;
     root.update('
-      <div class="test">
+      <div class="test" style=${'background-image: url("${backgroundImageUrl}")'}>
         Hello <strong>HXX</strong>!!!
       </div>
     ');
+    return;
     check(
       #if tink_hxx
       'Hello <strong>HXX</strong>!!!'
