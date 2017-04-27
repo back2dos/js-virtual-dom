@@ -41,6 +41,14 @@ class RunTests extends haxe.unit.TestCase {
       #end
     );
 
+    #if tink_hxx
+      var html = root.currentElement().innerHTML;
+      root.update('<raw content={html} />');
+      var strong = root.currentElement().querySelector('strong');
+      assertTrue(strong != null);
+      root.update('<raw content={html} />');
+      assertEquals(strong, root.currentElement().querySelector('strong'));
+    #end
   }
 
   static function main() {

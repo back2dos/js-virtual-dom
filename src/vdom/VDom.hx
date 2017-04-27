@@ -34,6 +34,7 @@ extern class VDom {
   static inline function header(attr:EditableAttr, ?children:Children):VNode return h('header', attr, children);
   static inline function footer(attr:EditableAttr, ?children:Children):VNode return h('footer', attr, children);
   static inline function main(attr:EditableAttr, ?children:Children):VNode return h('main', attr, children);
+  static inline function nav(attr:EditableAttr, ?children:Children):VNode return h('nav', attr, children);
   
   static inline function h1(attr:EditableAttr, ?children:Children):VNode return h('h1', attr, children);
   static inline function h2(attr:EditableAttr, ?children:Children):VNode return h('h2', attr, children);
@@ -63,18 +64,15 @@ extern class VDom {
   
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
   
-  static inline function raw(attr: RawAttr):VNode {	  
-    var spanElement = Browser.document.createSpanElement();
-    spanElement.innerHTML = attr.content;
-    var widget:Widget = new Foreign(spanElement);
-    return widget;
-  }
+  static inline function raw(attr: RawAttr):VNode 
+    return new HtmlFragment(attr.content, attr.tag);  
   
 }
 
 
 typedef RawAttr = {
   var content:String;
+  @:optional var tag:String;
 }
 
 typedef EditableAttr = {>Attr,

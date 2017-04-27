@@ -39,7 +39,7 @@ abstract VRoot({}) {
         #else
           switch StringTools.ltrim(s).charAt(0) {
             case '<' | '{':
-              Context.warning('The provided string constant looks like HXX but you are compiling without -lib hxx', next.pos);
+              Context.warning('The provided string constant looks like HXX but you are compiling without -lib tink_hxx', next.pos);
             default:
           }
         #end
