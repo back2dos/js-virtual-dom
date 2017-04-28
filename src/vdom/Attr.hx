@@ -4,7 +4,6 @@ import js.html.*;
 
 using tink.CoreApi;
 
-typedef Style = Dynamic;
 abstract ClassName(String) from String to String {
 
   @:from static function ofMap(parts:Map<String, Bool>)
