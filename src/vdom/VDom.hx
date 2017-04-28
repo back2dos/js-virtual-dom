@@ -34,7 +34,6 @@ extern class VDom {
   static inline function header(attr:EditableAttr, ?children:Children):VNode return h('header', attr, children);
   static inline function footer(attr:EditableAttr, ?children:Children):VNode return h('footer', attr, children);
   static inline function main(attr:EditableAttr, ?children:Children):VNode return h('main', attr, children);
-  static inline function nav(attr:EditableAttr, ?children:Children):VNode return h('nav', attr, children);
   
   static inline function h1(attr:EditableAttr, ?children:Children):VNode return h('h1', attr, children);
   static inline function h2(attr:EditableAttr, ?children:Children):VNode return h('h2', attr, children);
@@ -64,48 +63,52 @@ extern class VDom {
   
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
   
-  static inline function raw(attr: RawAttr):VNode 
-    return new HtmlFragment(attr.content, attr.tag);  
+  static inline function raw(attr: RawAttr):VNode {	  
+	  var spanElement = Browser.document.createSpanElement();
+	  spanElement.innerHTML = attr.content;
+	  var widget:Widget = new Foreign(spanElement);
+	  return widget;
+  }
   
 }
 
 
 typedef RawAttr = {
-  var content:String;
-  @:optional var tag:String;
+	var content:String;
 }
 
 typedef EditableAttr = {>Attr,
-  @:optional var contentEditable(default, null):Bool;
+  @:optional var contentEditable(default, never):Bool;
 }
 
 typedef FormAttr = {>AttrOf<FormElement>,
-  @:optional var method(default, null):String;
-  @:optional var action(default, null):String;
+  @:optional var method(default, never):String;
+  @:optional var action(default, never):String;
 }
 
 typedef AnchorAttr = {> AttrOf<AnchorElement>,
-  @:optional var href(default, null):String; 
+  @:optional var href(default, never):String; 
 }
 
 
 typedef InputAttr = {> AttrOf<InputElement>, 
-  @:optional var checked(default, null):Bool;
-  @:optional var disabled(default, null):Bool;
-  @:optional var value(default, null):String; 
-  @:optional var type(default, null):String; 
-  @:optional var name(default, null):String;
-  @:optional var placeholder(default, null):String;
-  @:optional var max(default, null):String;
-  @:optional var min(default, null):String;
+  @:optional var checked(default, never):Bool;
+  @:optional var disabled(default, never):Bool;
+  @:optional var required(default, never):Bool;
+  @:optional var value(default, never):String; 
+  @:optional var type(default, never):String; 
+  @:optional var name(default, never):String;
+  @:optional var orient(default, never):String;
+  @:optional var max(default, never):String;
+  @:optional var min(default, never):String;
 }
 
 typedef ImgAttr = {> AttrOf<ImageElement>, 
-  @:optional var src(default, null):String; 
+  @:optional var src(default, never):String; 
 }
 
 typedef LabelAttr = {> AttrOf<LabelElement>, 
-  @:optional var htmlFor(default, null):String;
+  @:optional var htmlFor(default, never):String;
 }
  
 
@@ -126,7 +129,7 @@ using tink.CoreApi;
 
 class VDom {
   #if tink_hxx
-  static public var options(default, null):GeneratorOptions = { customAttributes: 'attributes', child: macro : vdom.VNode };
+  static public var options(default, never):GeneratorOptions = { customAttributes: 'attributes', child: macro : vdom.VNode };
   #end
   static public function hxx(e:Expr) 
     return 
