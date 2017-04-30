@@ -34,6 +34,15 @@ extern class VDom {
   static inline function header(attr:EditableAttr, ?children:Children):VNode return h('header', attr, children);
   static inline function footer(attr:EditableAttr, ?children:Children):VNode return h('footer', attr, children);
   static inline function main(attr:EditableAttr, ?children:Children):VNode return h('main', attr, children);
+  static inline function nav(attr:EditableAttr, ?children:Children):VNode return h('nav', attr, children);
+  
+  static inline function table(attr:EditableAttr, ?children:Children):VNode return h('table', attr, children);
+  static inline function thead(attr:EditableAttr, ?children:Children):VNode return h('thead', attr, children);
+  static inline function tbody(attr:EditableAttr, ?children:Children):VNode return h('tbody', attr, children);
+  static inline function tfoot(attr:EditableAttr, ?children:Children):VNode return h('tfoot', attr, children);
+  static inline function tr(attr:EditableAttr, ?children:Children):VNode return h('tr', attr, children);
+  static inline function td(attr:EditableAttr, ?children:Children):VNode return h('td', attr, children);
+  static inline function th(attr:EditableAttr, ?children:Children):VNode return h('th', attr, children);
   
   static inline function h1(attr:EditableAttr, ?children:Children):VNode return h('h1', attr, children);
   static inline function h2(attr:EditableAttr, ?children:Children):VNode return h('h2', attr, children);
@@ -98,7 +107,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var value(default, never):String; 
   @:optional var type(default, never):String; 
   @:optional var name(default, never):String;
-  @:optional var orient(default, never):String;
+  @:optional var placeholder(default, never):String;
   @:optional var max(default, never):String;
   @:optional var min(default, never):String;
 }
