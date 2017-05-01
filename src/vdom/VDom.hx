@@ -66,6 +66,10 @@ extern class VDom {
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
   static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
   
+  static inline function hr(attr: Attr):VNode return h('hr', attr);
+  static inline function br(attr: Attr):VNode return h('br', attr);
+  static inline function wbr(attr: Attr):VNode return h('wbr', attr);
+	
   static inline function img(attr: ImgAttr ):VNode return h('img', attr);
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
   static inline function form(attr: FormAttr, ?children:Children):VNode return h('form', attr, children);
