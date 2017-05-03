@@ -55,7 +55,7 @@ extern class VDom {
   static inline function span(attr:EditableAttr, ?children:Children):VNode return h('span', attr, children);
   static inline function a(attr:AnchorAttr, ?children:Children):VNode return h('a', attr, children);
   
-  static inline function br(attr:EditableAttr, ?children:Children):VNode return h('br', attr, children);
+  static inline function br(attr:EditableAttr, ?children:Children):VNode return h('br', attr);
   static inline function p(attr:EditableAttr, ?children:Children):VNode return h('p', attr, children);
   static inline function i(attr:EditableAttr, ?children:Children):VNode return h('i', attr, children);
   static inline function b(attr:EditableAttr, ?children:Children):VNode return h('b', attr, children);
