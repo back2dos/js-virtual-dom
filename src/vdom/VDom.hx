@@ -118,8 +118,8 @@ typedef InputAttr = {> AttrOf<InputElement>,
 
 typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var src(default, never):String;
-  @:optional var width(default, never):String;
-  @:optional var height(default, never):String;
+  @:optional var width(default, never):Int;
+  @:optional var height(default, never):Int;
 }
 
 typedef LabelAttr = {> AttrOf<LabelElement>,
