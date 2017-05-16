@@ -71,6 +71,7 @@ extern class VDom {
   static inline function wbr(attr: Attr):VNode return h('wbr', attr);
 
   static inline function img(attr: ImgAttr ):VNode return h('img', attr);
+  static inline function video(attr: VideoAttr ):VNode return h('video', attr);
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
   static inline function form(attr: FormAttr, ?children:Children):VNode return h('form', attr, children);
 
@@ -120,6 +121,11 @@ typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var src(default, never):String;
   @:optional var width(default, never):Int;
   @:optional var height(default, never):Int;
+}
+
+typedef VideoAttr = {> AttrOf<VideoElement>,
+  @:optional var src(default, never):String;
+  @:optional var autoplay(default, never):Bool;
 }
 
 typedef LabelAttr = {> AttrOf<LabelElement>,
