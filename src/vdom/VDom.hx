@@ -77,9 +77,8 @@ extern class VDom {
 
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
 
- static inline function raw(attr: RawAttr):VNode 
+  static inline function raw(attr: RawAttr):VNode 
     return new HtmlFragment(attr.content, attr.tag);  
-    @:optional var tag:String;
 
 }
 
