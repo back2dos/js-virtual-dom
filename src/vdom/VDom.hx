@@ -77,18 +77,16 @@ extern class VDom {
 
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
 
-  static inline function raw(attr: RawAttr):VNode {
-	  var spanElement = Browser.document.createSpanElement();
-	  spanElement.innerHTML = attr.content;
-	  var widget:Widget = new Foreign(spanElement);
-	  return widget;
-  }
+ static inline function raw(attr: RawAttr):VNode 
+    return new HtmlFragment(attr.content, attr.tag);  
+    @:optional var tag:String;
 
 }
 
 
 typedef RawAttr = {
 	var content:String;
+  @:optional var tag:String;
 }
 
 typedef EditableAttr = {>Attr,
