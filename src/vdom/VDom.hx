@@ -58,6 +58,7 @@ extern class VDom {
   static inline function p(attr:EditableAttr, ?children:Children):VNode return h('p', attr, children);
   static inline function i(attr:EditableAttr, ?children:Children):VNode return h('i', attr, children);
   static inline function b(attr:EditableAttr, ?children:Children):VNode return h('b', attr, children);
+  static inline function small(attr:EditableAttr, ?children:Children):VNode return h('small', attr, children);
   static inline function menu(attr:EditableAttr, ?children:Children):VNode return h('menu', attr, children);
   static inline function ul(attr:EditableAttr, ?children:Children):VNode return h('ul', attr, children);
   static inline function ol(attr:EditableAttr, ?children:Children):VNode return h('ol', attr, children);
