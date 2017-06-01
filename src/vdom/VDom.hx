@@ -113,6 +113,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var placeholder(default, never):String;
   @:optional var max(default, never):String;
   @:optional var min(default, never):String;
+  @:optional var step(default, never):String;
 }
 
 typedef ImgAttr = {> AttrOf<ImageElement>,
