@@ -79,7 +79,7 @@ extern class VDom {
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
 
   static inline function raw(attr: RawAttr):VNode 
-    return new HtmlFragment(attr.content, attr.tag);  
+    return new HtmlFragment(attr.content, attr.tag, attr.className);  
 
 }
 
@@ -87,6 +87,7 @@ extern class VDom {
 typedef RawAttr = {
 	var content:String;
   @:optional var tag:String;
+  @:optional var className:ClassName;
 }
 
 typedef EditableAttr = {>Attr,
