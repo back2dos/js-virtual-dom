@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Added a few missing tags. Improve class name operations.",
-	"version": "0.6.0",
+	"releasenote": "Add missing anchor attributes.",
+	"version": "0.6.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
