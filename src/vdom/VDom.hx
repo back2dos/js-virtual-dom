@@ -141,6 +141,7 @@ typedef ImgAttr = {> AttrOf<ImageElement>,
 typedef VideoAttr = {> AttrOf<VideoElement>,
   @:optional var src(default, never):String;
   @:optional var autoplay(default, never):Bool;
+  @:optional var controls(default, never):Bool;
 }
 
 typedef LabelAttr = {> AttrOf<LabelElement>,
