@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Add iframe.",
-	"version": "0.7.1",
+	"releasenote": "Make iframe attributes optional.",
+	"version": "0.7.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
