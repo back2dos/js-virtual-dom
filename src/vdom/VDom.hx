@@ -20,6 +20,8 @@ extern class VDom {
   static function create(node:VNode):Element;
   static function diff(old:VNode, nu:VNode):Patch;
 
+  static inline function iframe(attr: {> Attr, sandbox:String, width:Int, height:Int, src:String, srcdoc:String, allowfullscreen:Bool }, ?children:Children):VNode return h('iframe', attr, children);
+
   static inline function object(attr: {> Attr, type:String, data:String }, ?children:Children):VNode return h('object', attr, children);
 
   static inline function param(attr: {> Attr, name:String, value:String } ):VNode return h('param', attr);
