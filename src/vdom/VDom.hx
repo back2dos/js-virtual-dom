@@ -20,7 +20,7 @@ extern class VDom {
   static function create(node:VNode):Element;
   static function diff(old:VNode, nu:VNode):Patch;
 
-  static inline function iframe(attr: {> Attr, sandbox:String, width:Int, height:Int, src:String, srcdoc:String, allowfullscreen:Bool }, ?children:Children):VNode return h('iframe', attr, children);
+  static inline function iframe(attr: IframeAttr, ?children:Children):VNode return h('iframe', attr, children);
 
   static inline function object(attr: {> Attr, type:String, data:String }, ?children:Children):VNode return h('object', attr, children);
 
@@ -124,6 +124,14 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var step(default, never):String;
 }
 
+typedef IframeAttr = {> AttrOf<IFrameElement>,
+  @:optional var sandbox(default, never):String; 
+  @:optional var width(default, never):Int; 
+  @:optional var height(default, never):Int; 
+  @:optional var src(default, never):String; 
+  @:optional var srcdoc(default, never):String; 
+  @:optional var allowfullscreen(default, never):Bool;
+}
 typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var src(default, never):String;
   @:optional var width(default, never):Int;
