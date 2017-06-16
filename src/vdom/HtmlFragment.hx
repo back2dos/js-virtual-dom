@@ -19,7 +19,7 @@ class HtmlFragment extends Widget {
     if (this.element == null) {
       this.element = document.createElement(tag);
       this.element.innerHTML = this.content;
-      this.element.className = this.className;
+      if (this.className != null) this.element.className = this.className;
     }
     return this.element;
   }
