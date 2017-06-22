@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Improve inline style handling.",
-	"version": "0.5.4",
+	"releasenote": "Added video.controls",
+	"version": "0.7.3",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
