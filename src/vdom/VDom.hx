@@ -66,6 +66,7 @@ extern class VDom {
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
   static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
   
+  static inline function canvas(attr: CanvasAttr ):VNode return h('canvas', attr);
   static inline function img(attr: ImgAttr ):VNode return h('img', attr);
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
   static inline function form(attr: FormAttr, ?children:Children):VNode return h('form', attr, children);
@@ -84,6 +85,11 @@ extern class VDom {
 
 typedef RawAttr = {
 	var content:String;
+}
+
+typedef CanvasAttr = {>Attr,
+  @:optional var width(default, never):String;
+  @:optional var height(default, never):String;
 }
 
 typedef EditableAttr = {>Attr,
