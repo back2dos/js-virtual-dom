@@ -331,6 +331,7 @@ typedef StyleObject = {
   @:optional var zIndex(default, never):String;
 }
 
+@:forward
 abstract Style(StyleObject) from StyleObject to StyleObject {
   static var style = js.Browser.document.createElement('div').style;
   @:from static function ofString(s:String):Style {

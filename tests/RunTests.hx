@@ -4,6 +4,7 @@ import vdom.VDom.*;
 import vdom.VRoot;
 import vdom.VNode;
 import vdom.Attr;
+import vdom.Style;
 import vdom.Widget;
 
 import js.Browser.*;
@@ -53,6 +54,24 @@ class RunTests extends haxe.unit.TestCase {
       root.update('<raw content={html} />');
       assertEquals(strong, root.currentElement().querySelector('strong'));
     #end
+  }
+  
+  function testStyle() {
+    var root = new vdom.VRoot();
+    document.body.appendChild(root);
+    root.update(
+      #if tink_hxx
+      '<div style="height:32%">style test</div>'
+      #else
+      div({ style: 'height:32%' }, ['style test'])
+      #end
+    );
+    assertTrue(root.currentElement().style.height == '32%');
+  }
+  
+  function testStyleOfString() {
+    var style:Style = 'height:32%';
+    assertTrue(style.height == '32%');
   }
 
   static function main() {
