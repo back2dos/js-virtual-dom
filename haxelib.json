@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Added video.controls",
-	"version": "0.7.3",
+	"releasenote": "Add canvas",
+	"version": "0.8.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
