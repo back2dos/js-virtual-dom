@@ -61,7 +61,7 @@ class RunTests extends haxe.unit.TestCase {
     document.body.appendChild(root);
     root.update(
       #if tink_hxx
-      '<div style="height:32%">style test</div>'
+      '<div style="height:32%; width:34%">style test</div>'
       #else
       div({ style: 'height:32%' }, ['style test'])
       #end
