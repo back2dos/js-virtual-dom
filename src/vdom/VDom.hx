@@ -137,8 +137,16 @@ typedef IframeAttr = {> AttrOf<IFrameElement>,
   @:optional var height(default, never):Int; 
   @:optional var src(default, never):String; 
   @:optional var srcdoc(default, never):String; 
-  @:optional var allowfullscreen(default, never):Bool;
+  @:optional var allowFullscreen(default, never):Bool;
+  @:deprecated @:optional var scrolling(default, never):IframeScrolling;
 }
+
+@:enum abstract IframeScrolling(String) {
+  var Yes = "yes";
+  var No = "no";
+  var Auto = "auto";
+}
+
 typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var src(default, never):String;
   @:optional var width(default, never):Int;
