@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Add canvas",
-	"version": "0.8.0",
+	"releasenote": "Add iframe scrolling and fix allowFullscreen.",
+	"version": "0.8.1",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
