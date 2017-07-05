@@ -67,7 +67,7 @@ extern class VDom {
   static inline function li(attr:EditableAttr, ?children:Children):VNode return h('li', attr, children);
   static inline function label(attr:LabelAttr, ?children:Children):VNode return h('label', attr, children);
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
-  static inline function textarea(attr:AttrOf<TextAreaElement>, ?children:Children):VNode return h('textarea', attr, children);
+  static inline function textarea(attr:TextAreaAttr, ?children:Children):VNode return h('textarea', attr, children);
   
 
   static inline function hr(attr: Attr):VNode return h('hr', attr);
@@ -129,6 +129,21 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var max(default, never):String;
   @:optional var min(default, never):String;
   @:optional var step(default, never):String;
+}
+
+typedef TextAreaAttr = {> AttrOf<TextAreaElement>,
+  @:optional var autofocus(default, never):Bool;
+  @:optional var cols(default, never):Int;
+  @:optional var dirname(default, never):String;
+  @:optional var disabled(default, never):Bool;
+  @:optional var form(default, never):String;
+  @:optional var maxlength(default, never):Int;
+  @:optional var name(default, never):String;
+  @:optional var placeholder(default, never):String;
+  @:optional var readonly(default, never):Bool;
+  @:optional var required(default, never):Bool;
+  @:optional var rows(default, never):Int;
+  @:optional var wrap(default, never):String;
 }
 
 typedef IframeAttr = {> AttrOf<IFrameElement>,
