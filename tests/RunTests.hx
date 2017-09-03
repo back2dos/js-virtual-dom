@@ -79,12 +79,25 @@ class RunTests extends haxe.unit.TestCase {
     document.body.appendChild(root);
     root.update(
       #if tink_hxx
-      '<td colspan=${1}>colspan test</td>'
+      '<td colSpan=${1}>colspan test</td>'
       #else
-      td({ colspan: 1 }, ['colspan test'])
+      td({ colSpan: 1 }, ['colspan test'])
       #end
     );
     assertTrue(root.currentElement().getAttribute('colspan') == '1');
+  }
+  
+  function testRowspan() {
+    var root = new vdom.VRoot();
+    document.body.appendChild(root);
+    root.update(
+      #if tink_hxx
+      '<td rowSpan=${1}>rowspan test</td>'
+      #else
+      td({ rowSpan: 1 }, ['rowspan test'])
+      #end
+    );
+    assertTrue(root.currentElement().getAttribute('rowspan') == '1');
   }
 
   static function main() {

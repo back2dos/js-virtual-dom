@@ -120,9 +120,9 @@ typedef AnchorAttr = {> AttrOf<AnchorElement>,
 
 typedef TableCellAttr = {> Attr,
   @:optional var abbr(default, never):String;
-  @:optional var colspan(default, never):Int;
+  @:optional var colSpan(default, never):Int;
   @:optional var headers(default, never):String;
-  @:optional var rowspan(default, never):Int;
+  @:optional var rowSpan(default, never):Int;
   @:optional var scope(default, never):String;
   @:optional var sorted(default, never):String;
 }
