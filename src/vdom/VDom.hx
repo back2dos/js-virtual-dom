@@ -82,20 +82,11 @@ extern class VDom {
 
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
 
-  static inline function raw(attr: RawAttr):VNode 
-    return 
-      if (attr.content == "" && attr.force != true) null;
-      else new HtmlFragment(attr.content, attr.tag, attr.className);  
-
+  static inline function raw(attr: vdom.HtmlFragment.RawAttr):VNode 
+    return vdom.HtmlFragment.create(attr);
 }
 
 
-typedef RawAttr = {
-	var content:String;
-  @:optional var force:Bool;
-  @:optional var tag:String;
-  @:optional var className:ClassName;
-}
 
 typedef CanvasAttr = {>Attr,
   @:optional var width(default, never):String;

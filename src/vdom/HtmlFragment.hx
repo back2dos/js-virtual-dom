@@ -42,4 +42,16 @@ class HtmlFragment extends Widget {
     }
   }
     
+  static public function create(attr:RawAttr):VNode
+    return 
+      if (attr.content == "" && attr.force != true) null;
+      else new HtmlFragment(attr.content, attr.tag, attr.className);  
+
+}
+
+typedef RawAttr = {
+	var content:String;
+  @:optional var force:Bool;
+  @:optional var tag:String;
+  @:optional var className:ClassName;
 }
