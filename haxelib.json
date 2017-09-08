@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Add iframe scrolling and fix allowFullscreen.",
-	"version": "0.8.1",
+	"releasenote": "Improved support for textarea, th, td. Haxe 4 support.",
+	"version": "0.9.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
