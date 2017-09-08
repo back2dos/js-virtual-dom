@@ -43,8 +43,8 @@ extern class VDom {
   static inline function tbody(attr:EditableAttr, ?children:Children):VNode return h('tbody', attr, children);
   static inline function tfoot(attr:EditableAttr, ?children:Children):VNode return h('tfoot', attr, children);
   static inline function tr(attr:EditableAttr, ?children:Children):VNode return h('tr', attr, children);
-  static inline function td(attr:EditableAttr, ?children:Children):VNode return h('td', attr, children);
-  static inline function th(attr:EditableAttr, ?children:Children):VNode return h('th', attr, children);
+  static inline function td(attr:TableCellAttr, ?children:Children):VNode return h('td', attr, children);
+  static inline function th(attr:TableCellAttr, ?children:Children):VNode return h('th', attr, children);
 
   static inline function h1(attr:EditableAttr, ?children:Children):VNode return h('h1', attr, children);
   static inline function h2(attr:EditableAttr, ?children:Children):VNode return h('h2', attr, children);
@@ -115,6 +115,16 @@ typedef AnchorAttr = {> AttrOf<AnchorElement>,
   @:optional var href(default, never):String;
   @:optional var target(default, never):String;
   @:optional var type(default, never):String;
+}
+
+
+typedef TableCellAttr = {> Attr,
+  @:optional var abbr(default, never):String;
+  @:optional var colSpan(default, never):Int;
+  @:optional var headers(default, never):String;
+  @:optional var rowSpan(default, never):Int;
+  @:optional var scope(default, never):String;
+  @:optional var sorted(default, never):String;
 }
 
 

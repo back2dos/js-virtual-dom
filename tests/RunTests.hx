@@ -73,6 +73,32 @@ class RunTests extends haxe.unit.TestCase {
     var style:Style = 'height:32%';
     assertTrue(style.height == '32%');
   }
+  
+  function testColspan() {
+    var root = new vdom.VRoot();
+    document.body.appendChild(root);
+    root.update(
+      #if tink_hxx
+      '<td colSpan=${1}>colspan test</td>'
+      #else
+      td({ colSpan: 1 }, ['colspan test'])
+      #end
+    );
+    assertTrue(root.currentElement().getAttribute('colspan') == '1');
+  }
+  
+  function testRowspan() {
+    var root = new vdom.VRoot();
+    document.body.appendChild(root);
+    root.update(
+      #if tink_hxx
+      '<td rowSpan=${1}>rowspan test</td>'
+      #else
+      td({ rowSpan: 1 }, ['rowspan test'])
+      #end
+    );
+    assertTrue(root.currentElement().getAttribute('rowspan') == '1');
+  }
 
   static function main() {
     var runner = new haxe.unit.TestRunner();
