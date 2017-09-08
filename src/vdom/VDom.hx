@@ -85,7 +85,7 @@ extern class VDom {
   static inline function raw(attr: RawAttr):VNode 
     return 
       if (attr.content == "" && attr.force != true) null;
-      else new HtmlFragment(attr.content, attr.tag, attr.className);  
+      else (new HtmlFragment(attr.content, attr.tag, attr.className):VNode);  
 
 }
 
