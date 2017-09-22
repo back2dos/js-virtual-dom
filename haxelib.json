@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Actually fix Haxe 4 related issues.",
-	"version": "0.9.1",
+	"releasenote": "Add select and option.",
+	"version": "0.9.2",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
