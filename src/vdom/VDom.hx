@@ -80,6 +80,9 @@ extern class VDom {
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
   static inline function form(attr: FormAttr, ?children:Children):VNode return h('form', attr, children);
 
+  static inline function select(attr: SelectAttr, ?children:Children):VNode return h('select', attr, children);
+  static inline function option(attr: OptionAttr, ?children:Children):VNode return h('option', attr, children);
+
   static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
 
   static inline function raw(attr: vdom.HtmlFragment.RawAttr):VNode 
@@ -178,6 +181,27 @@ typedef VideoAttr = {> AttrOf<VideoElement>,
 
 typedef LabelAttr = {> AttrOf<LabelElement>,
   @:optional var htmlFor(default, never):String;
+}
+
+typedef SelectAttr = {> AttrOf<SelectElement>,
+  @:optional var autofocus(default, never):Bool;
+  @:optional var disabled(default, never):Bool;
+  @:optional var form(default, never):FormElement;
+  @:optional var multiple(default, never):Bool;
+  @:optional var name(default, never):String;
+  @:optional var required(default, never):Bool;
+  @:optional var size(default, never):Int;
+}
+
+typedef OptionAttr = {> AttrOf<OptionElement>,
+  @:optional var disabled:Bool;
+  @:optional var form(default, never):FormElement;
+  @:optional var label(default, never):String;
+  @:optional var defaultSelected(default, never):Bool;
+  @:optional var selected(default, never):Bool;
+  @:optional var value(default, never):String;
+  @:optional var text(default, never):String;
+  @:optional var index(default, never):Int;
 }
 
 
