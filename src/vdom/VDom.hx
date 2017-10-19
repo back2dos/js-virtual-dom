@@ -77,7 +77,9 @@ extern class VDom {
 
   static inline function canvas(attr: CanvasAttr ):VNode return h('canvas', attr);
   static inline function img(attr: ImgAttr ):VNode return h('img', attr);
-  static inline function video(attr: VideoAttr ):VNode return h('video', attr);
+  static inline function audio(attr: AudioAttr, ?children:Children ):VNode return h('audio', attr, children);
+  static inline function video(attr: VideoAttr, ?children:Children ):VNode return h('video', attr, children);
+  static inline function source(attr: SourceAttr ):VNode return h('source', attr);
   static inline function input(attr: InputAttr ):VNode return h('input', attr);
   static inline function form(attr: FormAttr, ?children:Children):VNode return h('form', attr, children);
 
@@ -174,10 +176,27 @@ typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var height(default, never):Int;
 }
 
+typedef AudioAttr = {> AttrOf<AudioElement>,
+  @:optional var src(default, never):String;
+  @:optional var autoplay(default, never):Bool;
+  @:optional var controls(default, never):Bool;
+  @:optional var loop(default, never):Bool;
+  @:optional var muted(default, never):Bool;
+  @:optional var preload(default, never):String;
+}
+
 typedef VideoAttr = {> AttrOf<VideoElement>,
   @:optional var src(default, never):String;
   @:optional var autoplay(default, never):Bool;
   @:optional var controls(default, never):Bool;
+}
+
+typedef SourceAttr = {> AttrOf<SourceElement>,
+  @:optional var src(default, never):String;
+  @:optional var srcset(default, never):String;
+  @:optional var media(default, never):String;
+  @:optional var sizes(default, never):String;
+  @:optional var type(default, never):String;
 }
 
 typedef LabelAttr = {> AttrOf<LabelElement>,
