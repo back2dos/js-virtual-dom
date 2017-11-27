@@ -75,7 +75,7 @@ typedef AttrOf<Target:Element> = {
   @:optional var lang(default, never):String;
   @:optional var dir(default, never):String;
   
-  @:optional var attributes(default, never):Dynamic<Ext>;
+  @:optional var attributes(default, never):PureDynamicAccess<Ext>;
   
   @:optional var hidden(default, never):Bool;
   @:optional var tabIndex(default, never):Int;
@@ -176,4 +176,17 @@ typedef AttrOf<Target:Element> = {
   @:optional var ontouchend(default, never):Callback<EventFrom<TouchEvent, Target>>;
   @:optional var ontouchmove(default, never):Callback<EventFrom<TouchEvent, Target>>;
   @:optional var ontouchcancel(default, never):Callback<EventFrom<TouchEvent, Target>>;
+}
+
+@:pure
+abstract PureDynamicAccess<T>(Dynamic<T>) from Dynamic<T> {
+
+  public inline function new() this = {};
+
+  @:arrayAccess
+  public inline function get(key:String):Null<T> return untyped this[key]; // we know it's an object, so we don't need a check
+
+  public inline function exists(key:String):Bool return Reflect.hasField(this, key);
+
+  public inline function keys():Array<String> return Reflect.fields(this);
 }
