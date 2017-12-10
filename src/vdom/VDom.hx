@@ -129,6 +129,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var checked(default, never):Bool;
   @:optional var disabled(default, never):Bool;
   @:optional var required(default, never):Bool;
+  @:optional var autofocus(default, never):Bool;
   @:optional var value(default, never):String;
   @:optional var type(default, never):String;
   @:optional var name(default, never):String;
