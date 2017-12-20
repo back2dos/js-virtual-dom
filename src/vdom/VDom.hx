@@ -240,11 +240,13 @@ using tink.CoreApi;
 
 class VDom {
   #if tink_hxx
-  static var generator = new Generator();
-  dynamic static public function getGenerator()
-    return generator;
+  static public var generator(default, never):Generator = 
+    new Generator([function (name) return {
+      value: 'vdom.VDom.${name.value}',
+      pos: name.pos,
+    }]);
   #end
-  static public function hxx(e:Expr)
+  dynamic static public function hxx(e:Expr)
     return
       #if tink_hxx
         generator.root(Parser.parseRoot(e));

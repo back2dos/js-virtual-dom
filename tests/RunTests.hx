@@ -1,6 +1,7 @@
 package ;
 
-import vdom.VDom.*;
+import vdom.VDom.hxx;
+import vdom.VDom.div;
 import vdom.VRoot;
 import vdom.VNode;
 import vdom.Attr;
