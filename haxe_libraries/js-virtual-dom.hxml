@@ -1,2 +1,3 @@
 -D js-virtual-dom=dev
 -cp src
+-lib tink_core

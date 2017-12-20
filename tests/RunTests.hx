@@ -31,18 +31,14 @@ class RunTests extends haxe.unit.TestCase {
     var backgroundImageUrl = 'http://placehold.it/350x150';
     // var style = ;
     root.update('
-      <div class="test" style=${'background-image: url("${backgroundImageUrl}")'}>
-        Hello <strong>HXX</strong>!!!
-      </div>
+      <div class="test" style=${'background-image: url("${backgroundImageUrl}")'}>Hello <strong>HXX</strong>!!!</div>
     ');
-    return;
+    
     check(
       #if tink_hxx
       'Hello <strong>HXX</strong>!!!'
       #else
-      '<div class="test">
-        Hello <strong>HXX</strong>!!!
-      </div>'.htmlEscape()
+     '<div class="test" style=${'background-image: url("${backgroundImageUrl}")'}>Hello <strong>HXX</strong>!!!</div>'.htmlEscape()
       #end
     );
 
@@ -86,7 +82,16 @@ class RunTests extends haxe.unit.TestCase {
     );
     assertTrue(root.currentElement().getAttribute('colspan') == '1');
   }
-  
+  #if tink_hxx
+  function testChildSpread() {
+    var children = [for (i in 0...5) div({})];
+    var root = new vdom.VRoot();
+    document.body.appendChild(root);
+    root.update('<section>{...children}</section>');
+    assertEquals(5, root.currentElement().querySelectorAll('div').length);
+  }
+  #end
+
   function testRowspan() {
     var root = new vdom.VRoot();
     document.body.appendChild(root);

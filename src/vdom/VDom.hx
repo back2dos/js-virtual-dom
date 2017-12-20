@@ -86,8 +86,6 @@ extern class VDom {
   static inline function select(attr: SelectAttr, ?children:Children):VNode return h('select', attr, children);
   static inline function option(attr: OptionAttr, ?children:Children):VNode return h('option', attr, children);
 
-  static inline function splat(nodes:Array<VNode>):VNode return cast nodes;
-
   static inline function raw(attr: vdom.HtmlFragment.RawAttr):VNode 
     return vdom.HtmlFragment.create(attr);
 }
@@ -233,8 +231,7 @@ extern class Patch { }
 import haxe.macro.Expr;
 
 #if tink_hxx
-import tink.hxx.Parser;
-import tink.hxx.Generator;
+import tink.hxx.*;
 #end
 
 using haxe.macro.Context;
@@ -243,16 +240,14 @@ using tink.CoreApi;
 
 class VDom {
   #if tink_hxx
-  static public var options(default, never):GeneratorOptions = { customAttributes: 'attributes', child: macro : vdom.VNode };
+  static var generator = new Generator();
+  dynamic static public function getGenerator()
+    return generator;
   #end
   static public function hxx(e:Expr)
     return
       #if tink_hxx
-        Parser.parse(
-          e,
-          options,
-          { defaultExtension: 'hxx', noControlStructures: false, defaultSwitchTarget: macro __data__ }
-        );
+        generator.root(Parser.parseRoot(e));
       #else
         'You have to add -lib tink_hxx to use HXX syntax'.fatalError(Context.currentPos());
       #end

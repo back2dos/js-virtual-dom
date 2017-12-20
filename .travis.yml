@@ -1,23 +1,17 @@
 sudo: required
 dist: trusty
 
-language: haxe
+language: node_js
+node_js: 6
 
 os:
   - linux
   
-haxe:
-  - "3.4.2"
-  - development
-      
-matrix:
-  allow_failures:
-    - haxe: development      
-      
 install:
+  - npm install haxeshim -g
+  - npm install lix.pm -g
+  - lix download
   - haxelib install travix
-  - haxelib install tink_hxx
-  - haxelib run travix install
 
 script:
   - haxelib run travix js
