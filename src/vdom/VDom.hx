@@ -56,6 +56,7 @@ extern class VDom {
   static inline function em(attr:EditableAttr, ?children:Children):VNode return h('em', attr, children);
   static inline function span(attr:EditableAttr, ?children:Children):VNode return h('span', attr, children);
   static inline function a(attr:AnchorAttr, ?children:Children):VNode return h('a', attr, children);
+  static inline function base(attr:BaseAttr):VNode return h('base', attr);
 
   static inline function p(attr:EditableAttr, ?children:Children):VNode return h('p', attr, children);
   static inline function i(attr:EditableAttr, ?children:Children):VNode return h('i', attr, children);
@@ -110,6 +111,11 @@ typedef AnchorAttr = {> AttrOf<AnchorElement>,
   @:optional var href(default, never):String;
   @:optional var target(default, never):String;
   @:optional var type(default, never):String;
+}
+
+typedef BaseAttr = {> AttrOf<BaseElement>,
+  @:optional var href(default, never):String;
+  @:optional var target(default, never):String;
 }
 
 
