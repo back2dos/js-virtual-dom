@@ -4,7 +4,9 @@ import js.html.Element;
 
 class Widget {
   @:noCompletion 
-  @:isVar @:keep public var type(never, never):String = "Widget";
+  @:isVar 
+  @:keep 
+  @:native('type') public var virtualDomType(never, never):String = "Widget";
   
   @:keep public function init():Element {
     return throw 'abstract';
