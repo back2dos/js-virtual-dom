@@ -82,7 +82,6 @@ typedef AttrOf<Target:Element> = {
   @:optional var accessKey(default, never):String;
   @:optional var accessKeyLabel(default, never):String;
   @:optional var draggable(default, never):Bool;
-  @:optional var contentEditable(default, never):Bool;
   @:optional var spellcheck(default, never):Bool;
   @:optional var style(default, never):Style;
   
