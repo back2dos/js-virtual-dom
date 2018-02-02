@@ -137,6 +137,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var min(default, never):String;
   @:optional var step(default, never):String;
   @:optional var maxlength(default, never):Int;
+  @:optional var pattern(default, never):String;
 }
 
 typedef TextAreaAttr = {> AttrOf<TextAreaElement>,
