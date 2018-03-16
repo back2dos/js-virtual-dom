@@ -6,7 +6,7 @@ class Widget {
   @:noCompletion 
   @:isVar 
   @:keep 
-  @:native('type') public var virtualDomType(never, never):String = "Widget";
+  @:native('type') public var virtualDomType(default, never):String = "Widget";
   
   @:keep public function init():Element {
     return throw 'abstract';
