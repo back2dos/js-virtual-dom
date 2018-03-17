@@ -1,6 +1,7 @@
 package ;
 
 import vdom.VDom.div;
+import vdom.VDom.td;
 import vdom.VRoot;
 import vdom.Style;
 
