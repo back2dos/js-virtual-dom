@@ -1,12 +1,8 @@
 package ;
 
 import vdom.VDom.div;
-import vdom.VDom.td;
 import vdom.VRoot;
-import vdom.VNode;
-import vdom.Attr;
 import vdom.Style;
-import vdom.Widget;
 
 import js.Browser.*;
 using StringTools;

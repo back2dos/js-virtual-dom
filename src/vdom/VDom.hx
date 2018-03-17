@@ -251,11 +251,17 @@ using tink.CoreApi;
 
 class VDom {
   #if tink_hxx
-  static public var generator(default, never):Generator = 
-    new Generator([function (name) return {
-      value: 'vdom.VDom.${name.value}',
-      pos: name.pos,
-    }]);
+  static public function allTags():Array<Named<Generator.Tag>>
+    return
+      switch 'vdom.VDom'.getType() {
+        case TInst(_.get().statics.get() => statics, _):
+          [for (f in statics) switch f.kind {
+            case FMethod(MethInline): new Named(f.name, Generator.tagDeclaration('vdom.VDom.${f.name}', f.pos, f.type));
+            default: continue;
+          }];
+        default: throw 'assert';
+      }  
+  static public var generator(default, never):Generator = new Generator(allTags);
   #end
   dynamic static public function hxx(e:Expr)
     return
