@@ -62,9 +62,15 @@ typedef Attr = AttrOf<Element>;
 
 @:forward
 abstract EventFrom<E:Event, T:Element>(E) from E to E {
+  
   public var target(get, never):T;
     inline function get_target():T
+      return cast this.currentTarget;
+
+  public var exactTarget(get, never):Element;
+    inline function get_exactTarget():Element
       return cast this.target;
+  
 }
 
 typedef AttrOf<Target:Element> = {
