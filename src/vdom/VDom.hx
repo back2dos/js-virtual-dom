@@ -125,6 +125,7 @@ typedef TableCellAttr = {> Attr,
 
 
 typedef InputAttr = {> AttrOf<InputElement>,
+  @:optional var autocomplete(default, never):String;
   @:optional var checked(default, never):Bool;
   @:optional var disabled(default, never):Bool;
   @:optional var required(default, never):Bool;
@@ -143,6 +144,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
 }
 
 typedef TextAreaAttr = {> AttrOf<TextAreaElement>,
+  @:optional var autocomplete(default, never):String;
   @:optional var autofocus(default, never):Bool;
   @:optional var cols(default, never):Int;
   @:optional var dirname(default, never):String;
