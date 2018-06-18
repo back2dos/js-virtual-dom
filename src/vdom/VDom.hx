@@ -105,6 +105,7 @@ typedef EditableAttr = {>Attr,
 typedef FormAttr = {>AttrOf<FormElement>,
   @:optional var method(default, never):String;
   @:optional var action(default, never):String;
+  @:optional var autocomplete(default, never):String;
 }
 
 typedef AnchorAttr = {> AttrOf<AnchorElement>,
