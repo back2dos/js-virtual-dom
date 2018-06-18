@@ -136,6 +136,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var type(default, never):String;
   @:optional var name(default, never):String;
   @:optional var placeholder(default, never):String;
+  @:optional var readonly(default, never):Bool;
   @:optional var max(default, never):String;
   @:optional var min(default, never):String;
   @:optional var step(default, never):String;
