@@ -136,7 +136,7 @@ typedef InputAttr = {> AttrOf<InputElement>,
   @:optional var type(default, never):String;
   @:optional var name(default, never):String;
   @:optional var placeholder(default, never):String;
-  @:optional var readonly(default, never):Bool;
+  @:optional var readOnly(default, never):Bool;
   @:optional var max(default, never):String;
   @:optional var min(default, never):String;
   @:optional var step(default, never):String;
@@ -155,7 +155,7 @@ typedef TextAreaAttr = {> AttrOf<TextAreaElement>,
   @:optional var maxLength(default, never):Int;
   @:optional var name(default, never):String;
   @:optional var placeholder(default, never):String;
-  @:optional var readonly(default, never):Bool;
+  @:optional var readOnly(default, never):Bool;
   @:optional var required(default, never):Bool;
   @:optional var rows(default, never):Int;
   @:optional var wrap(default, never):String;
