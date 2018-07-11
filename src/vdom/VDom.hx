@@ -197,8 +197,8 @@ typedef VideoAttr = {> AttrOf<VideoElement>,
   @:optional var autoplay(default, never):Bool;
   @:optional var controls(default, never):Bool;
   @:optional var height(default, never):Int;
-  @:optional var loop(default, never):String;
-  @:optional var muted(default, never):String;
+  @:optional var loop(default, never):Bool;
+  @:optional var muted(default, never):Bool;
   @:optional var poster(default, never):String;
   @:optional var preload(default, never):String;
   @:optional var width(default, never):Int;
