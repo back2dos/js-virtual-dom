@@ -10,8 +10,8 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Changed Attr.attributes' type to PureDynamicAccess",
-	"version": "0.9.3",
+	"releasenote": "Avoid initializing widgets twice.",
+	"version": "0.11.0",
 	"url": "https://github.com/back2dos/js-virtual-dom/",
 	"dependencies": {
 		"tink_core": ""
