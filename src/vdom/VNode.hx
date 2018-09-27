@@ -13,7 +13,7 @@ private extern class VNodeImpl {
 @:coreType @:pure 
 abstract VNode from VNodeImpl from Widget from String {
   
-  @:deprecated("Implicit cast to DOM is deprecated. Call .toElement() explicitly.")
+  //@:deprecated("Implicit cast to DOM is deprecated. Call .toElement() explicitly.")
   @:to function autoRender():Element
     return toElement();
 
