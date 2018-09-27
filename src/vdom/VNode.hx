@@ -13,8 +13,14 @@ private extern class VNodeImpl {
 @:coreType @:pure 
 abstract VNode from VNodeImpl from Widget from String {
   
-  @:to public function toElement() 
-    return VDom.create(this);//TODO: handle array case
+  @:deprecated("Implicit cast to DOM is deprecated. Call .toElement() explicitly.")
+  @:to function autoRender():Element
+    return toElement();
+
+  public function toElement():Element
+    return 
+      if (untyped __js__('typeof {0}.toElement === "function"', this)) (cast this).toElement();
+      else VDom.create(this);//TODO: handle array case
   
   @:to public function toChildList():Children
     return [this];

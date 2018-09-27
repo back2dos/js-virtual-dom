@@ -10,7 +10,10 @@ class Foreign extends Widget
     
   override public function init() 
     return this.element;
-    
+
+  override public function toElement() 
+    return this.element;
+
   override function update(_, _)
     return this.element;
 }

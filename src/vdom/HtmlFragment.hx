@@ -16,13 +16,17 @@ class HtmlFragment extends Widget {
   }
 
   override public function init() {
-    if (this.element == null) {
-      this.element = document.createElement(tag);
-      this.element.innerHTML = this.content;
-      if (this.className != null) this.element.className = this.className;
-    }
+    this.element = document.createElement(tag);
+    this.element.innerHTML = this.content;
+    if (this.className != null) this.element.className = this.className;
     return this.element;
   }
+
+  override public function toElement()
+    return switch this.element {
+      case null: init();
+      case e: e;
+    } 
     
   override function update(old:{}, e:Element) {
     return switch Std.instance(old, HtmlFragment) {
