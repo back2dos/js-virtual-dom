@@ -81,6 +81,7 @@ typedef AttrOf<Target:Element> = {
   @:optional var lang(default, never):String;
   @:optional var dir(default, never):String;
   
+  @:hxxCustomAttributes(~/.*/)
   @:optional var attributes(default, never):PureDynamicAccess<Ext>;
   
   @:optional var hidden(default, never):Bool;
