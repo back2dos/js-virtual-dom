@@ -68,6 +68,8 @@ extern class VDom {
   static inline function label(attr:LabelAttr, ?children:Children):VNode return h('label', attr, children);
   static inline function button(attr:InputAttr, ?children:Children):VNode return h('button', attr, children);
   static inline function textarea(attr:TextAreaAttr, ?children:Children):VNode return h('textarea', attr, children);
+  static inline function blockquote(attr:BlockQuoteAttr, ?children:Children):VNode return h('blockquote', attr, children);
+  static inline function cite(attr:EditableAttr, ?children:Children):VNode return h('cite', attr, children);
   
   static inline function pre(attr:EditableAttr, ?children:Children):VNode return h('pre', attr, children);
 
@@ -159,6 +161,10 @@ typedef TextAreaAttr = {> AttrOf<TextAreaElement>,
   @:optional var required(default, never):Bool;
   @:optional var rows(default, never):Int;
   @:optional var wrap(default, never):String;
+}
+  
+typedef BlockQuoteAttr = {> AttrOf<QuoteElement>,
+  @:optional var cite(default, never):String;
 }
 
 typedef IframeAttr = {> AttrOf<IFrameElement>,
