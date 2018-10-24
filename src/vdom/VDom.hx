@@ -110,8 +110,10 @@ typedef FormAttr = {>AttrOf<FormElement>,
 
 typedef AnchorAttr = {> AttrOf<AnchorElement>,
   @:optional var href(default, never):String;
+  @:optional var name(default, never):String;
   @:optional var target(default, never):String;
   @:optional var type(default, never):String;
+  @:optional var rel(default, never):String;
 }
 
 
@@ -181,6 +183,7 @@ typedef ImgAttr = {> AttrOf<ImageElement>,
   @:optional var src(default, never):String;
   @:optional var width(default, never):Int;
   @:optional var height(default, never):Int;
+  @:optional var alt(default, never):String;
 }
 
 typedef AudioAttr = {> AttrOf<AudioElement>,
