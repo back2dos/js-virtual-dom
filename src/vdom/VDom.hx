@@ -110,6 +110,7 @@ typedef FormAttr = {>AttrOf<FormElement>,
 
 typedef AnchorAttr = {> AttrOf<AnchorElement>,
   @:optional var href(default, never):String;
+  @:optional var name(default, never):String;
   @:optional var target(default, never):String;
   @:optional var type(default, never):String;
   @:optional var rel(default, never):String;
