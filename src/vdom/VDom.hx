@@ -205,6 +205,7 @@ typedef AudioAttr = {> AttrOf<AudioElement>,
   @:optional var loop(default, never):Bool;
   @:optional var muted(default, never):Bool;
   @:optional var preload(default, never):String;
+  @:optional var volume(default, never):Float;
 }
 
 typedef VideoAttr = {> AttrOf<VideoElement>,
@@ -217,6 +218,7 @@ typedef VideoAttr = {> AttrOf<VideoElement>,
   @:optional var poster(default, never):String;
   @:optional var preload(default, never):String;
   @:optional var width(default, never):Int;
+  @:optional var volume(default, never):Float;
 }
 
 typedef SourceAttr = {> AttrOf<SourceElement>,
